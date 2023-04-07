@@ -7,6 +7,15 @@ comments: true
 author: Qinbo Sun
 ---
 
+A hybrid vehicle has an internal combustion engine, a motor/generator connected to a storage battery, and a conventional (friction) brake. 
+
+We consider a (highly simpliﬁed) model of a parallel hybrid vehicle, in which both the motor/generator and the engine are directly connected to the drive wheels. The engine can provide power to the wheels, and the brake can take power from the wheels, turning it into heat. 
+
+The motor/generator can act as a motor, when it uses energy stored in the battery to deliver power to the wheels, or as a generator, when it takes power from the wheels or engine, and uses the power to charge the battery. When the generator takes power from the wheels and charges the battery, it is called regenerative braking; unlike ordinary friction braking, the energy taken from the wheels is stored, and can be used later. 
+
+The vehicle is judged by driving it over a known, ﬁxed test track to evaluate its fuel eﬃciency. 
+
+A diagram illustrating the power ﬂow in the hybrid vehicle is shown below.
 
 # Weekly Report
 
