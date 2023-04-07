@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "可能是最全面的github pages搭建个人博客教程"
-date:   2023-04-08
+title: "可能是最全面的github pages搭建个人博客教程1"
+date:   2023-04-01
 tags: [geek]
 comments: true
 author: lemonchann
