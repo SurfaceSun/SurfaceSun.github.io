@@ -5,6 +5,7 @@ date:   2020-03-23
 tags: [Test]
 comments: true
 author: Qinbo Sun
+toc: true
 ---
 
 A hybrid vehicle has an internal combustion engine, a motor/generator connected to a storage battery, and a conventional (friction) brake. 
