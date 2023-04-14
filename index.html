@@ -1,24 +1,92 @@
 ---
-layout: page
-title: Research
-permalink: /research/
+layout: default
 ---
+<div class="search-container">
+  <input type="text" id="search-input" placeholder="search news" style="width: 60%;
+    height: 35px;
+    color: #333;
+    background-color: rgba(227,231,236,.2);
+    line-height: 30px;
+    padding:0px 16px;
+    border: 1px solid #c0c0c0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 17px;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);">
+  <ul id="results-container"></ul>
+</div>
 
-<!-- The Research Section -->
-  <div class="w3-container w3-padding-32" id="award">
-    <h2>Research Interests</h2>
-    <p><li> My research is mainly focused on the safe navigation of sailing robots. Unmanned sailboat is a kind of surface robot driven only by the wind, with no noise, zero emissions, can survive for a long time. I am committed to ensuring the safe navigation of sailing robots for cost-effective, environmentally friendly, long-distance and long-duration ocean observation. A novel risk assessment strategy is proposed to show the regional distribution of sailing risk dynamically and in real time in view of the complex factors such as wind field, waves, tides and obstacles at sea. In addition, aiming at the problems of off-course, stall and even capsizing caused by the wake of surrounding vehicles, I modeled the wake and proposed and realized the avoidance strategy. All the above safety measures are verified by experiments on the real sea surface. As a core member of my research team, I have been devoted to the front line of ocean experiments for a long time, and strive to help promote the research of sailing robots.</p>  
-    <h2>Publications</h2>
-    <p><li> Weimin Qi, Qinbo Sun, Yu Cao, Huihuan Qian, “Stable Station Keeping of Autonomous Sailing Robots via the Switched Systems Approach for Ocean Observation” IEEE International Conference on Robotics and Automation (ICRA), 2023. （Accepted）</p>               
-    <p><li> Qinbo Sun, Weimin Qi, Cheng Liang, Bairun Lin, Francesco Maurelli, Huihuan Qian, “Sailboat Test Arena (STAr): A Remotely Accessible Platform for Robotic Sailboat Research”, Journal of Marine Science and Engineering, Special Issue "New Trends in Marine Robotics: Virtual Experiments and Remote Access", 2023. (Co-first author)</p>
-    <p><li> Qinbo Sun, Weimin Qi, Hengli Liu, Xiaoqiang Ji and Huihuan Qian, “Toward Long-Term Sailing Robots: State of the Art From Energy Perspectives”, Frontiers in Robotics and AI, 2022.</p>
-    <p><li> Weimin Qi, Qinbo Sun, Xiaoqiang Ji, Yiwen Liang, Zhongzhong Cao and Huihuan Qian, “A Kelvin Wake Avoidance Scheme for Autonomous Sailing Robots Based on Orientation-restricted Dubin Path”, IEEE Robotics and Automation Letters (RA-L), 2021.</p>
-    <p><li> Weimin Qi, Qinbo Sun, Chongfeng Liu, Xiaoqiang Ji, Zhongzhong Cao, Yiwen Liang and Huihuan Qian, “Collision Risk Assessment and Obstacle Avoidance Control for Autonomous Sailing Robots”, IEEE International Conference on Robotics and Automation (ICRA), 2021.</p>
-    <p><li> Qinbo Sun, Weimin Qi, Xiaoqiang Ji and Huihuan Qian, “V-stability based Control for Energy-saving towards Long Range Sailing”, IEEE Robotics and Automation Letters (RA-L), 2021.</p>
-    <p><li> Ning Ding, Weimin Qi, Huihuan Qian, “Crowd Modeling Based on Purposiveness and Destination-driven Analysis Method”, Frontiers of Information Technology & Electronic Engineering, 2021.</p>
-    <p><li> Yao He, Qinbo Sun, Weimin Qi1, Xiaoqiang Ji and Huihuan Qian, “Computational Efficient Simulation of Kelvin Wake for Unmanned Surface Vehicles”, IEEE International Conference on Real-time Computing and Robotics (RCAR), 2021. </p>
-    <p><li> Qinbo Sun, Weimin Qi, Hengli Liu, Zhenglong Sun, Tin Lun Lam and Huihuan Qian, “OceanVoy: A Hybrid System for Energy Planning in Autonomous Sailboat”, IEEE/RSJ, International Conference on Intelligent Robots and Systems (IROS) 2020. (Best Application Paper Finalist Award)</p>
-    <p><li> Weimin Qi, Qinbo Sun, Hengli Liu, Zhenglong Sun, Huihuan Qian, Tin Lun Lam, “Collision Avoidance for Autonomous Sailboats Based on RRS Protocol”, IEEE International Conference on Real-time Computing and Robotics (RCAR), 2019. (Best Paper FinalList Award)</p>
-    <p><li> Ziyuan Chen, Weimin Qi, Qinbo Sun, Hengli Liu, Ning Ding, Zhenglong Sun, Tin Lun Lam, Huihuan Qian, “Obstacle Avoidance for Autonomous Sailboats via Reinforcement Learning with Coarse-to-fine Strategy”, IEEE, International Conference on Robotics and Biomimetics (ROBIO), 2019. (Best Paper FinalList Award) </p>
-    <p><li> Xianggang Yu, Weimin Qi, Qinbo Sun, Hengli Liu, Zhenglong Sun, and Huihuan Qian, “A Low-Cost, Wide-Range and Multi-Functional Vision Backend of SailBoat Research Testbed”, IEEE International Conference on Real-time Computing and Robotics (RCAR), 2019. </p>
-  </div>  
+<!--script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script-->
+<script src="{{ site.baseurl }}/js/simple-jekyll-search.min.js"></script>
+
+<script>
+	window.simpleJekyllSearch = new SimpleJekyllSearch({
+	searchInput: document.getElementById('search-input'),
+	resultsContainer: document.getElementById('results-container'),
+	json: '{{ site.baseurl }}/search.json',
+	searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>',
+	noResultsText: 'No results found',
+	limit: 10,
+	fuzzy: false,
+	exclude: ['Welcome']
+  })
+</script>
+ 
+{% if site.posts.size == 0 %}
+  <h2>No post found</h2>
+{% endif %}
+
+<div class="posts">
+  {% for post in paginator.posts %}
+  {% unless post.draft %}
+    <article class="post">
+      <h1>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </h1>
+
+      <div clsss="meta">
+        <span class="date">
+          {{ post.date | date: "%Y-%m-%d" }}
+        </span>
+
+        <ul class="tag">
+          {% for tag in post.tags %}
+          <li>
+            <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
+              {{ tag }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="entry">
+        {{ post.excerpt | truncate: 200 }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endunless %}
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <span class="prev">
+      <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="prev">
+        ← 上一页
+      </a>
+    </span>
+  {% endif %}
+  {% if paginator.next_page %}
+    <span class="next">
+      <a href="{{ site.baseurl}}{{ paginator.next_page_path }}" class="next">
+        下一页 →
+      </a>
+    </span>
+  {% endif %}
+</div>
+
+
